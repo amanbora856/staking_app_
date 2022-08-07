@@ -13,7 +13,7 @@ contract Dummy_Token{
         uint _value
     );
 
-    event Approval(
+    event Approve(
         address indexed _owner,
         address indexed _spender,
         uint _value
@@ -27,7 +27,7 @@ contract Dummy_Token{
     }
     function transfer(address _to,uint256 _value)public returns(bool success)
     {
-        require(balance[msg.sender]>=value);
+        require(balance[msg.sender]>=_value);
         balance[msg.sender] -=_value;
         balance[_to] +=_value;
         emit Transfer(msg.sender,_to,_value);
@@ -35,8 +35,8 @@ contract Dummy_Token{
     }
     function approve(address _spender,uint256 _value)public returns(bool success)
     {
-        allowance[msg.sender][_spender]=value;
-        emit Approve[msg.sender][_spender]=_value;
+        allowance[msg.sender][_spender]=_value;
+        emit Approve(msg.sender,_spender,_value);
         return true;
     }
     function transferfrom(address _from,address _to,uint256 _value)public returns(bool success)
