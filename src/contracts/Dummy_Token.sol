@@ -43,7 +43,7 @@ contract Dummy_Token{
     {
         require(_value <=balance[_from]);
         require(_value <=allowance[_from][msg.sender]);
-        balance[_from] -=allowance[_from][msg.sender]);
+        balance[_from] -=allowance[_from][msg.sender];
         balance[_from] -=_value;
         balance[_to] +=_value;
         allowance[_from][msg.sender] -=_value;
